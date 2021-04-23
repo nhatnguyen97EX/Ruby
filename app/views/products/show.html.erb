@@ -1,0 +1,43 @@
+<h1 align="center">Product details</h1>
+<table border = "1" align="center" cellpadding = "10" cellspacing = "0">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+    </tr>
+    <tr>
+        <td><%=@pro.id%></td>
+        <td><%=@pro.name%></td>
+        <td><%=@pro.price%></td>
+        <td><%=@pro.created_at%></td>
+        <td><%=@pro.updated_at%></td>
+    </tr>
+</table>
+<%@pro.comments.each do |c|%>
+<span style="font-size: 20px"><b><%=c.commenter%>:</b>
+<span style="font-size: 20px, "><i><%=c.body%></i>
+<form action="/products/comments" method="post" data-confirm="Are you sure?">
+            <input name="_method" type="hidden" value="delete" />
+            <input type="hidden" name="authenticity_token">
+            <input type="hidden" name="pro_id" value=<%=@pro.id%>>
+            <input type="hidden" name="id" value=<%=c.id%>>
+            <button style="font-size: 14px">Delete</button>
+            </form>
+<br>
+<%end%>
+
+<h2>Add comment</h2>
+<form action="/products/comments" method="post">
+    <input type="hidden" name="authenticity_token"> 
+    <input type="hidden" name="id" value=<%=@pro.id%>>
+    <label for="price">Your name</label><br>
+    <input type="text" name="comment[commenter]" id="commenter"><br>
+    <label for="price">Your comment</label><br>
+    <input type="text" name="comment[body]" id="body">
+    <button style="font-size: 14px">Post</button> 
+</form>
+<form action="/" method="get" align="center" >
+    <button><h2>List Product</h2></button>  
+</form>

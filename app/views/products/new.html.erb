@@ -1,0 +1,18 @@
+<h1 align="center" >New Product</h1>
+
+<form align="center" action="/products" accept-charset="UTF-8" method="POST">
+  <input type="hidden" name="authenticity_token">
+  <div>
+    <label for="name">Name</label><br>
+    <input type="text" name="product[name]" id="product_name">
+  </div>
+
+  <div>
+    <label for="price">Price</label><br>
+    <input name="product[price]" id="product_price">
+  </div>
+
+  <div>
+  <button style="font-size: 20px">Create Product</button>
+  </div>
+</form>

@@ -1,0 +1,20 @@
+<h1 align="center">Update Product</h1>
+<form align="center" action="/products" method="POST" accept-charset="UTF-8" >
+  <input name="_method" type="hidden" value="patch" />
+  <input type="hidden" name="authenticity_token">
+  <div>
+    <input type="hidden" name="id" id="product_id" value=<%=@pro.id%>>
+    <input type="hidden" name="created_at" id="product_created_at" value=<%=@pro.created_at%>>
+    <label for="name">Name</label><br>
+    <input type="text" name="product[name]" id="product_name" value=<%=@pro.name%>>
+  </div>
+
+  <div>
+    <label for="price">Price</label><br>
+    <input name="product[price]" id="product_price" value=<%=@pro.price%>>
+  </div>
+
+  <div>
+    <button style="font-size: 20px">Update Product</button>
+  </div>
+</form>

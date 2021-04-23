@@ -1,0 +1,41 @@
+
+<h1 align="center">List product</h1>
+<table align="center" border = "1"  cellpadding = "10" cellspacing = "0">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+    <%@products.each do |pro|%>
+        <tr>
+            <td><%=pro.id%></a></td>
+            <td><%=pro.name%></td>
+            <td>
+            
+            <form action="/products" method="get">
+            <input type="hidden" name="id" value=<%=pro.id%>>
+            <button style="font-size: 14px">Detail</button> 
+            </form>
+           
+            <form action="/products/edit" method="GET">
+            <input type="hidden" name="id" value=<%=pro.id%>>
+            <button style="font-size: 14px">Edit</button>
+            </form>
+           
+            <form action="/products" method="post" data-confirm="Are you sure?">
+            <input name="_method" type="hidden" value="delete" />
+            <input type="hidden" name="authenticity_token"> 
+            <input type="hidden" name="id" value=<%=pro.id%>>
+            <button style="font-size: 14px">Delete</button>
+            </form>
+           
+            </td>
+        </tr>
+        <%end%>
+</table>
+<div align="center">
+<form action="/products/new" method="GET" >
+<button style="font-size: 21px">Create new product</button>
+</form>
+</div>
+
